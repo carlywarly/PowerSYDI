@@ -33,11 +33,11 @@ Path to where you wish to save the output. Default: ".\", current folder
 
 .PARAMETER username 
 Username the script should run under, such as "User01", "Domain01\User01", or 
-User@domain.com.   If you have not used –password, you will be prompted for a 
+User@domain.com.   If you have not used -password, you will be prompted for a 
 password.
 
 .PARAMETER password 
-Used in conjunction with the above –username
+Used in conjunction with the above -username
 
 .PARAMETER Credential
 Powershell credential object you wish to run the script under, cannot be used 
@@ -52,7 +52,7 @@ PowerSYDI.ps1
 Reports on current system and save to current folder, using your logged on credentials.
 
 .EXAMPLE 
-PowerSYDI.ps1 -computer server2 –username domain\admininstrator -noping -Background "#ff0000"
+PowerSYDI.ps1 -computer server2 -username domain\admininstrator -noping -Background "#ff0000"
 Runs the script against host server2, using the domain administrator account. You will be prompted for a password and the server will not be pinged. The output will be called server2.html
 
 .EXAMPLE 
@@ -75,7 +75,7 @@ param (
        [String]$Computer = ".",
        [String]$Username = '',
        [String]$Password = "",
-       [String]$BackGround = "#A30B1A",
+       [String]$BackGround = "#0033a0",
        [String]$Path = ".\",
        [Switch]$NoPing = $True,
        [Switch]$LoadDoc = $False,
@@ -90,7 +90,7 @@ param (
 )
 
 # Copyright (c) 2004-2009 Patrick Ogenstad
-# Copyright (c) 2013-2018 Carl Armstrong
+# Copyright (c) 2013-2020 Carl Armstrong
 # All rights reserved.
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -952,30 +952,30 @@ function get_Win32_OperatingSystem_OSLanguage($intOSLanguage)
        switch ($intOSLanguage)
        {
              1  { $ret = "Arabic" }
-             4  { $ret = "Chinese (Simplified)– China" }
+             4  { $ret = "Chinese (Simplified)- China" }
              9  { $ret = "English" }
-             1025  { $ret = "Arabic – Saudi Arabia" }
+             1025  { $ret = "Arabic - Saudi Arabia" }
              1026  { $ret = "Bulgarian" }
              1027  { $ret = "Catalan" }
-             1028  { $ret = "Chinese (Traditional) – Taiwan" }
+             1028  { $ret = "Chinese (Traditional) - Taiwan" }
              1029  { $ret = "Czech" }
              1030  { $ret = "Danish" }
-             1031  { $ret = "German – Germany" }
+             1031  { $ret = "German - Germany" }
              1032  { $ret = "Greek" }
-             1033  { $ret = "English – United States" }
-             1034  { $ret = "Spanish – Traditional Sort" }
+             1033  { $ret = "English - United States" }
+             1034  { $ret = "Spanish - Traditional Sort" }
              1035  { $ret = "Finnish" }
-             1036  { $ret = "French – France" }
+             1036  { $ret = "French - France" }
              1037  { $ret = "Hebrew" }
              1038  { $ret = "Hungarian" }
              1039  { $ret = "Icelandic" }
-             1040  { $ret = "Italian – Italy" }
+             1040  { $ret = "Italian - Italy" }
              1041  { $ret = "Japanese" }
              1042  { $ret = "Korean" }
-             1043  { $ret = "Dutch – Netherlands" }
-             1044  { $ret = "Norwegian – Bokmal" }
+             1043  { $ret = "Dutch - Netherlands" }
+             1044  { $ret = "Norwegian - Bokmal" }
              1045  { $ret = "Polish" }
-             1046  { $ret = "Portuguese – Brazil" }
+             1046  { $ret = "Portuguese - Brazil" }
              1047  { $ret = "Rhaeto-Romanic" }
              1048  { $ret = "Romanian" }
              1049  { $ret = "Russian" }
@@ -995,7 +995,7 @@ function get_Win32_OperatingSystem_OSLanguage($intOSLanguage)
              1063  { $ret = "Lithuanian" }
              1065  { $ret = "Persian" }
              1066  { $ret = "Vietnamese" }
-             1069  { $ret = "Basque (Basque) – Basque" }
+             1069  { $ret = "Basque (Basque) - Basque" }
              1070  { $ret = "Serbian" }
              1071  { $ret = "Macedonian (FYROM)" }
              1072  { $ret = "Sutu" }
@@ -1009,70 +1009,70 @@ function get_Win32_OperatingSystem_OSLanguage($intOSLanguage)
              1082  { $ret = "Maltese" }
              1084  { $ret = "Scottish Gaelic (United Kingdom)" }
              1085  { $ret = "Yiddish" }
-             1086  { $ret = "Malay – Malaysia" }
-             2049  { $ret = "Arabic – Iraq" }
-             2052  { $ret = "Chinese (Simplified) – PRC" }
-             2055  { $ret = "German – Switzerland" }
-             2057  { $ret = "English – United Kingdom" }
-             2058  { $ret = "Spanish – Mexico" }
-             2060  { $ret = "French – Belgium" }
-             2064  { $ret = "Italian – Switzerland" }
-             2067  { $ret = "Dutch – Belgium" }
-             2068  { $ret = "Norwegian – Nynorsk" }
-             2070  { $ret = "Portuguese – Portugal" }
-             2072  { $ret = "Romanian – Moldova" }
-             2073  { $ret = "Russian – Moldova" }
-             2074  { $ret = "Serbian – Latin" }
-             2077  { $ret = "Swedish – Finland" }
-             3073  { $ret = "Arabic – Egypt" }
-             3076  { $ret = "Chinese (Traditional) – Hong Kong SAR" }
-             3079  { $ret = "German – Austria" }
-             3081  { $ret = "English – Australia" }
-             3082  { $ret = "Spanish – International Sort" }
-             3084  { $ret = "French – Canada" }
-             3098  { $ret = "Serbian – Cyrillic" }
-             4097  { $ret = "Arabic – Libya" }
-             4100  { $ret = "Chinese (Simplified) – Singapore" }
-             4103  { $ret = "German – Luxembourg" }
-             4105  { $ret = "English – Canada" }
-             4106  { $ret = "Spanish – Guatemala" }
-             4108  { $ret = "French – Switzerland" }
-             5121  { $ret = "Arabic – Algeria" }
-             5127  { $ret = "German – Liechtenstein" }
-             5129  { $ret = "English – New Zealand" }
-             5130  { $ret = "Spanish – Costa Rica" }
-             5132  { $ret = "French – Luxembourg" }
-             6145  { $ret = "Arabic – Morocco" }
-             6153  { $ret = "English – Ireland" }
-             6154  { $ret = "Spanish – Panama" }
-             7169  { $ret = "Arabic – Tunisia" }
-             7177  { $ret = "English – South Africa" }
-             7178  { $ret = "Spanish – Dominican Republic" }
-             8193  { $ret = "Arabic – Oman" }
-             8201  { $ret = "English – Jamaica" }
-             8202  { $ret = "Spanish – Venezuela" }
-             9217  { $ret = "Arabic – Yemen" }
-             9226  { $ret = "Spanish – Colombia" }
-             10241  { $ret = "Arabic – Syria" }
-             10249  { $ret = "English – Belize" }
-             10250  { $ret = "Spanish – Peru" }
-             11265  { $ret = "Arabic – Jordan" }
-             11273  { $ret = "English – Trinidad" }
-             11274  { $ret = "Spanish – Argentina" }
-             12289  { $ret = "Arabic – Lebanon" }
-             12298  { $ret = "Spanish – Ecuador" }
-             13313  { $ret = "Arabic – Kuwait" }
-             13322  { $ret = "Spanish – Chile" }
-             14337  { $ret = "Arabic – U.A.E." }
-             14346  { $ret = "Spanish – Uruguay" }
-             15361  { $ret = "Arabic – Bahrain" }
-             15370  { $ret = "Spanish – Paraguay" }
-             16385  { $ret = "Arabic – Qatar" }
-             16394  { $ret = "Spanish – Bolivia" }
-             17418  { $ret = "Spanish – El Salvador" }
-             18442  { $ret = "Spanish – Honduras" }
-             19466  { $ret = "Spanish – Nicaragua" }
-             20490  { $ret = "Spanish – Puerto Rico" }
+             1086  { $ret = "Malay - Malaysia" }
+             2049  { $ret = "Arabic - Iraq" }
+             2052  { $ret = "Chinese (Simplified) - PRC" }
+             2055  { $ret = "German - Switzerland" }
+             2057  { $ret = "English - United Kingdom" }
+             2058  { $ret = "Spanish - Mexico" }
+             2060  { $ret = "French - Belgium" }
+             2064  { $ret = "Italian - Switzerland" }
+             2067  { $ret = "Dutch - Belgium" }
+             2068  { $ret = "Norwegian - Nynorsk" }
+             2070  { $ret = "Portuguese - Portugal" }
+             2072  { $ret = "Romanian - Moldova" }
+             2073  { $ret = "Russian - Moldova" }
+             2074  { $ret = "Serbian - Latin" }
+             2077  { $ret = "Swedish - Finland" }
+             3073  { $ret = "Arabic - Egypt" }
+             3076  { $ret = "Chinese (Traditional) - Hong Kong SAR" }
+             3079  { $ret = "German - Austria" }
+             3081  { $ret = "English - Australia" }
+             3082  { $ret = "Spanish - International Sort" }
+             3084  { $ret = "French - Canada" }
+             3098  { $ret = "Serbian - Cyrillic" }
+             4097  { $ret = "Arabic - Libya" }
+             4100  { $ret = "Chinese (Simplified) - Singapore" }
+             4103  { $ret = "German - Luxembourg" }
+             4105  { $ret = "English - Canada" }
+             4106  { $ret = "Spanish - Guatemala" }
+             4108  { $ret = "French - Switzerland" }
+             5121  { $ret = "Arabic - Algeria" }
+             5127  { $ret = "German - Liechtenstein" }
+             5129  { $ret = "English - New Zealand" }
+             5130  { $ret = "Spanish - Costa Rica" }
+             5132  { $ret = "French - Luxembourg" }
+             6145  { $ret = "Arabic - Morocco" }
+             6153  { $ret = "English - Ireland" }
+             6154  { $ret = "Spanish - Panama" }
+             7169  { $ret = "Arabic - Tunisia" }
+             7177  { $ret = "English - South Africa" }
+             7178  { $ret = "Spanish - Dominican Republic" }
+             8193  { $ret = "Arabic - Oman" }
+             8201  { $ret = "English - Jamaica" }
+             8202  { $ret = "Spanish - Venezuela" }
+             9217  { $ret = "Arabic - Yemen" }
+             9226  { $ret = "Spanish - Colombia" }
+             10241  { $ret = "Arabic - Syria" }
+             10249  { $ret = "English - Belize" }
+             10250  { $ret = "Spanish - Peru" }
+             11265  { $ret = "Arabic - Jordan" }
+             11273  { $ret = "English - Trinidad" }
+             11274  { $ret = "Spanish - Argentina" }
+             12289  { $ret = "Arabic - Lebanon" }
+             12298  { $ret = "Spanish - Ecuador" }
+             13313  { $ret = "Arabic - Kuwait" }
+             13322  { $ret = "Spanish - Chile" }
+             14337  { $ret = "Arabic - U.A.E." }
+             14346  { $ret = "Spanish - Uruguay" }
+             15361  { $ret = "Arabic - Bahrain" }
+             15370  { $ret = "Spanish - Paraguay" }
+             16385  { $ret = "Arabic - Qatar" }
+             16394  { $ret = "Spanish - Bolivia" }
+             17418  { $ret = "Spanish - El Salvador" }
+             18442  { $ret = "Spanish - Honduras" }
+             19466  { $ret = "Spanish - Nicaragua" }
+             20490  { $ret = "Spanish - Puerto Rico" }
              default { $ret = $intOSLanguage }
        }
        return $ret
@@ -1260,8 +1260,8 @@ Function Get-Win32_Processor-Family($uint16_Family)
              2 { $ret = "Unknown" }
              3 { $ret = "8086" }
              4 { $ret = "80286" }
-             5 { $ret = "Intel386™ Processor" }
-             6 { $ret = "Intel486™ Processor" }
+             5 { $ret = "Intel386- Processor" }
+             6 { $ret = "Intel486- Processor" }
              7 { $ret = "8087" }
              8 { $ret = "80287" }
              9 { $ret = "80387" }
@@ -1269,18 +1269,18 @@ Function Get-Win32_Processor-Family($uint16_Family)
              11 { $ret = "Pentium Brand" }
              12 { $ret = "Pentium Pro" }
              13 { $ret = "Pentium II" }
-             14 { $ret = "Pentium Processor with MMX™ Technology" }
-             15 { $ret = "Celeron™" }
-             16 { $ret = "Pentium II Xeon™" }
+             14 { $ret = "Pentium Processor with MMX- Technology" }
+             15 { $ret = "Celeron-" }
+             16 { $ret = "Pentium II Xeon-" }
              17 { $ret = "Pentium III" }
              18 { $ret = "M1 Family" }
              19 { $ret = "M2 Family" }
-             24 { $ret = "AMD Duron™ Processor Family" }
+             24 { $ret = "AMD Duron- Processor Family" }
              25 { $ret = "K5 Family" }
              26 { $ret = "K6 Family" }
              27 { $ret = "K6-2" }
              28 { $ret = "K6-3" }
-             29 { $ret = "AMD Athlon™ Processor Family" }
+             29 { $ret = "AMD Athlon- Processor Family" }
              30 { $ret = "AMD2900 Family" }
              31 { $ret = "K6-2+" }
              32 { $ret = "Power PC Family" }
@@ -1321,13 +1321,13 @@ Function Get-Win32_Processor-Family($uint16_Family)
              100 { $ret = "68020" }
              101 { $ret = "68030" }
              112 { $ret = "Hobbit Family" }
-             120 { $ret = "Crusoe™ TM5000 Family" }
-             121 { $ret = "Crusoe™ TM3000 Family" }
-             122 { $ret = "Efficeon™ TM8000 Family" }
+             120 { $ret = "Crusoe- TM5000 Family" }
+             121 { $ret = "Crusoe- TM3000 Family" }
+             122 { $ret = "Efficeon- TM8000 Family" }
              128 { $ret = "Weitek" }
-             130 { $ret = "Itanium™ Processor" }
-             131 { $ret = "AMD Athlon™ 64 Processor Family" }
-             132 { $ret = "AMD Opteron™ Processor Family" }
+             130 { $ret = "Itanium- Processor" }
+             131 { $ret = "AMD Athlon- 64 Processor Family" }
+             132 { $ret = "AMD Opteron- Processor Family" }
              144 { $ret = " PA-RISC Family" }
              145 { $ret = "PA-RISC 8500" }
              146 { $ret = "PA-RISC 8000" }
@@ -1336,14 +1336,14 @@ Function Get-Win32_Processor-Family($uint16_Family)
              149 { $ret = "PA-RISC 7100LC" }
              150 { $ret = "PA-RISC 7100" }
              160 { $ret = "V30 Family" }
-             176 { $ret = "Pentium III Xeon™ Processor" }
-             177 { $ret = "Pentium III Processor with Intel SpeedStep™ Technology" }
+             176 { $ret = "Pentium III Xeon- Processor" }
+             177 { $ret = "Pentium III Processor with Intel SpeedStep- Technology" }
              178 { $ret = "Pentium 4" }
-             179 { $ret = "Intel Xeon™" }
+             179 { $ret = "Intel Xeon-" }
              180 { $ret = "AS400 Family" }
-             181 { $ret = "Intel Xeon™ Processor MP" }
-             182 { $ret = "AMD Athlon™ XP Family" }
-             183 { $ret = "AMD Athlon™ MP Family" }
+             181 { $ret = "Intel Xeon- Processor MP" }
+             182 { $ret = "AMD Athlon- XP Family" }
+             183 { $ret = "AMD Athlon- MP Family" }
              184 { $ret = "Intel Itanium 2" }
              185 { $ret = "Intel Pentium M Processor" }
              190 { $ret = "K7" }
@@ -2341,7 +2341,7 @@ function get_CountryCodebyNumber($intCountryCode)
              "222" { $ret = "Mauritania" }
              "223" { $ret = "Mali" }
              "224" { $ret = "Guinea" }
-             "225" { $ret = "Côte d'Ivoire" }
+             "225" { $ret = "C-te d'Ivoire" }
              "226" { $ret = "Burkina Faso" }
              "227" { $ret = "Niger" }
              "228" { $ret = "Togo" }
@@ -2661,7 +2661,7 @@ Function MYConvert-toHTML
                     If ($PSObject -ne $null) {
                            $ret = @()
                            Foreach ($line in $PSObject) {
-                                 $NewObject = New-Object –TypeName PSObject
+                                 $NewObject = New-Object -TypeName PSObject
                                  foreach ($header in $line.psobject.properties) {
                                         $Value = $header.value
                                         if ($Value -ne $null) {
@@ -2686,7 +2686,7 @@ Function MYConvert-toHTML
                                         }
                                         else { $value = "" }
                                         $HeaderName = (([regex]::replace(([regex]::replace($header.name, "[A-Z][a-z]+", " $&")), "[A-Z][A-Z]+", " $&")).replace("  ", " ").trim())
-                                        $NewObject | Add-Member Noteproperty –Name $HeaderName –Value $Value
+                                        $NewObject | Add-Member Noteproperty -Name $HeaderName -Value $Value
                                  }
                                  $ret += $NewObject
                            }
@@ -3013,28 +3013,28 @@ if ($Ping) {
                     $Win32_DiskDrive = $Win32_DiskDrive | Sort-Object "DeviceID"
                     foreach ($Win32_disk in $Win32_DiskDrive) {
                            $Partitions = @()
-                           $MyDisk = New-Object –TypeName PSObject
-                           $MyDisk | Add-Member Noteproperty –Name Caption –Value $Win32_disk.Caption
-                           $MyDisk | Add-Member Noteproperty –Name DeviceID –Value $Win32_disk.DeviceID
-                           $MyDisk | Add-Member Noteproperty –Name InterfaceType –Value $Win32_disk.InterfaceType
-                           $MyDisk | Add-Member Noteproperty –Name Size –Value ("{0:N0}" -f ($Win32_disk.Size / 1GB -as [int]) + " GB")
+                           $MyDisk = New-Object -TypeName PSObject
+                           $MyDisk | Add-Member Noteproperty -Name Caption -Value $Win32_disk.Caption
+                           $MyDisk | Add-Member Noteproperty -Name DeviceID -Value $Win32_disk.DeviceID
+                           $MyDisk | Add-Member Noteproperty -Name InterfaceType -Value $Win32_disk.InterfaceType
+                           $MyDisk | Add-Member Noteproperty -Name Size -Value ("{0:N0}" -f ($Win32_disk.Size / 1GB -as [int]) + " GB")
                            
                            foreach ($DiskDriveToDiskPartition in ($Win32_DiskDriveToDiskPartition | where { $_.Antecedent.contains($Win32_disk.DeviceID.Replace("\", "\\")) -eq $true }))        {
                                  if ($DiskDriveToDiskPartition -ne $null) {
                                         $PartName = $DiskDriveToDiskPartition.Dependent.split("=")[1] -replace ($Quotes, "")
                                         foreach ($LogicalDiskToPartition in ($Win32_LogicalDiskToPartition | where { $_.Antecedent.contains($PartName) -eq $true })) {
                                                $LogicalDisk = $Win32_LogicalDisk | where { $_.Caption -eq ($LogicalDiskToPartition.Dependent.split("=")[1] -replace ($Quotes, "")) }
-                                               $MyPartition = New-Object –TypeName PSObject
-                                               $MyPartition | Add-Member Noteproperty –Name Drive –Value ($LogicalDisk.DeviceID + " ")
-                                               $MyPartition | Add-Member Noteproperty –Name Volume –Value $LogicalDisk.VolumeName 
-                                               $MyPartition | Add-Member Noteproperty –Name Size –Value ("{0:N0}" -f ($LogicalDisk.Size / 1GB -as [int]) + " GB")
-                                               $MyPartition | Add-Member Noteproperty –Name "Free Space" –Value ("{0:N0}" -f ($LogicalDisk.FreeSpace / 1GB -as [int]) + " GB")
-                                               $MyPartition | Add-Member Noteproperty –Name "File System" –Value $LogicalDisk.FileSystem
+                                               $MyPartition = New-Object -TypeName PSObject
+                                               $MyPartition | Add-Member Noteproperty -Name Drive -Value ($LogicalDisk.DeviceID + " ")
+                                               $MyPartition | Add-Member Noteproperty -Name Volume -Value $LogicalDisk.VolumeName 
+                                               $MyPartition | Add-Member Noteproperty -Name Size -Value ("{0:N0}" -f ($LogicalDisk.Size / 1GB -as [int]) + " GB")
+                                               $MyPartition | Add-Member Noteproperty -Name "Free Space" -Value ("{0:N0}" -f ($LogicalDisk.FreeSpace / 1GB -as [int]) + " GB")
+                                               $MyPartition | Add-Member Noteproperty -Name "File System" -Value $LogicalDisk.FileSystem
                                                $Partitions += $MyPartition
                                         }
                                  }
                            }
-                           $MyDisk | Add-Member Noteproperty –Name Partitions –Value $Partitions
+                           $MyDisk | Add-Member Noteproperty -Name Partitions -Value $Partitions
                            $Disks += $MyDisk
                     }
              }
