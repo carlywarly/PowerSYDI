@@ -75,7 +75,7 @@ param (
        [String]$Computer = ".",
        [String]$Username = '',
        [String]$Password = "",
-       [String]$BackGround = "#0033a0",
+       [String]$BackGround = "#0076B8",
        [String]$Path = ".\",
        [Switch]$NoPing = $True,
        [Switch]$LoadDoc = $False,
